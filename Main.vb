@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Configuration
+Imports System.IO
 
 Public Class Main
 
@@ -58,20 +59,18 @@ Public Class Main
     End Sub
 
     Private Sub gamerunBTN_Click(sender As Object, e As EventArgs) Handles gamerunBTN.Click
-        Dim settings As New settings()
-        Dim findFileTXT As TextBox = settings.findFileTXT
-        Dim gamePath As String = findFileTXT.Text
+        Dim selectedFilePath As String = ConfigurationManager.AppSettings("selectedFilePath")
 
-        If Not String.IsNullOrEmpty(gamePath) Then
+        If Not String.IsNullOrEmpty(selectedFilePath) Then
             Try
-                Process.Start(gamePath)
+                Process.Start(selectedFilePath)
             Catch ex As Exception
                 MessageBox.Show("Failed to launch the application." & Environment.NewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
             'This code is for when user selected the checkbox on settings form, this code starts to work.
             Dim CheckBox1 As CheckBox = settings.CheckBox1
             If CheckBox1.Checked Then
-                Me.Close()
+                Close()
             End If
         End If
     End Sub
