@@ -45,7 +45,6 @@ Partial Class settings
         findFileTXT.Name = "findFileTXT"
         findFileTXT.Size = New Size(309, 23)
         findFileTXT.TabIndex = 1
-        findFileTXT.Text = "Find Doom.exe --->"
         ' 
         ' findBTN
         ' 

@@ -50,11 +50,39 @@ Public Class Main
             'these 2 lines of code is for not making other open section opening multiple times. Since VB.NET is dumb but easy.
             openOnce = True
             AddHandler settings.FormClosed, AddressOf settings_FormClosed
-            gamerunBTN.Enabled = False
         End If
     End Sub
 
     Private Sub settings_FormClosed(sender As Object, e As FormClosedEventArgs)
         openOnce = False
+    End Sub
+
+    Private Sub gamerunBTN_Click(sender As Object, e As EventArgs) Handles gamerunBTN.Click
+        Dim settings As New settings()
+        Dim findFileTXT As TextBox = settings.findFileTXT
+        Dim gamePath As String = findFileTXT.Text
+
+        If Not String.IsNullOrEmpty(gamePath) Then
+            Try
+                Process.Start(gamePath)
+            Catch ex As Exception
+                MessageBox.Show("Failed to launch the application." & Environment.NewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            'This code is for when user selected the checkbox on settings form, this code starts to work.
+            Dim CheckBox1 As CheckBox = settings.CheckBox1
+            If CheckBox1.Checked Then
+                Me.Close()
+            End If
+        End If
+    End Sub
+
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim settings As New settings()
+        Dim findFileTXT As TextBox = settings.findFileTXT
+        Dim CheckBox1 As CheckBox = settings.CheckBox1
+
+        findFileTXT.Text = My.Settings.selectedFilePath
+        CheckBox1.Checked = My.Settings.CheckBox1
+
     End Sub
 End Class
