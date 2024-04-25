@@ -1,9 +1,22 @@
 ﻿Imports System.Configuration
 Imports System.IO
+Imports System.Net
 
 Public Class Main
 
     Private openOnce As Boolean = False
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim settings As New settings()
+        Dim findFileTXT As TextBox = settings.findFileTXT
+        Dim CheckBox1 As CheckBox = settings.CheckBox1
+
+        findFileTXT.Text = My.Settings.selectedFilePath
+        CheckBox1.Checked = My.Settings.CheckBox1
+
+        AddHandler ModORPackGetList.DragEnter, AddressOf ModORPackGetList_DragEnter
+        AddHandler ModORPackGetList.DragDrop, AddressOf ModORPackGetList_DragDrop
+
+    End Sub
 
     Private Sub ModORPackGetList_DragEnter(sender As Object, e As DragEventArgs) Handles ModORPackGetList.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
@@ -63,7 +76,7 @@ Public Class Main
 
         If Not String.IsNullOrEmpty(selectedFilePath) Then
             Try
-                Process.Start(selectedFilePath)
+                Process.Start(selectedFilePath, $"--file ""{filePath}""") 'Work on this
             Catch ex As Exception
                 MessageBox.Show("Failed to launch the application." & Environment.NewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -73,15 +86,5 @@ Public Class Main
                 Close()
             End If
         End If
-    End Sub
-
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim settings As New settings()
-        Dim findFileTXT As TextBox = settings.findFileTXT
-        Dim CheckBox1 As CheckBox = settings.CheckBox1
-
-        findFileTXT.Text = My.Settings.selectedFilePath
-        CheckBox1.Checked = My.Settings.CheckBox1
-
     End Sub
 End Class
