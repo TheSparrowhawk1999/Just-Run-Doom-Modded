@@ -95,6 +95,7 @@ Partial Class settings
         Name = "settings"
         ShowIcon = False
         ShowInTaskbar = False
+        StartPosition = FormStartPosition.CenterScreen
         ResumeLayout(False)
         PerformLayout()
     End Sub

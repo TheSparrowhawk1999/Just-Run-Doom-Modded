@@ -1,6 +1,9 @@
 ﻿Imports System.IO
 
 Public Class Main
+
+    Private openOnce As Boolean = False
+
     Private Sub ModORPackGetList_DragEnter(sender As Object, e As DragEventArgs) Handles ModORPackGetList.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = DirectCast(e.Data.GetData(DataFormats.FileDrop), String())
@@ -38,5 +41,20 @@ Public Class Main
                 ModORPackGetList.Items.Remove(selectedItem)
             Next
         End If
+    End Sub
+
+    Private Sub settingsBTN_Click(sender As Object, e As EventArgs) Handles settingsBTN.Click
+        If Not openOnce Then
+            Dim settings As New settings()
+            settings.Show()
+            'these 2 lines of code is for not making other open section opening multiple times. Since VB.NET is dumb but easy.
+            openOnce = True
+            AddHandler settings.FormClosed, AddressOf settings_FormClosed
+            gamerunBTN.Enabled = False
+        End If
+    End Sub
+
+    Private Sub settings_FormClosed(sender As Object, e As FormClosedEventArgs)
+        openOnce = False
     End Sub
 End Class
