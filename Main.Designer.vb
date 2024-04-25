@@ -22,14 +22,49 @@ Partial Class Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        settingsBTN = New Button()
+        gamerunBTN = New Button()
+        ModORPackGetList = New ListBox()
         SuspendLayout()
+        ' 
+        ' settingsBTN
+        ' 
+        settingsBTN.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(162))
+        settingsBTN.Location = New Point(12, 12)
+        settingsBTN.Name = "settingsBTN"
+        settingsBTN.Size = New Size(45, 37)
+        settingsBTN.TabIndex = 0
+        settingsBTN.Text = "🎚️"
+        settingsBTN.UseVisualStyleBackColor = True
+        ' 
+        ' gamerunBTN
+        ' 
+        gamerunBTN.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gamerunBTN.Location = New Point(63, 12)
+        gamerunBTN.Name = "gamerunBTN"
+        gamerunBTN.Size = New Size(75, 37)
+        gamerunBTN.TabIndex = 1
+        gamerunBTN.Text = "RUN ▶️"
+        gamerunBTN.UseVisualStyleBackColor = True
+        ' 
+        ' ModORPackGetList
+        ' 
+        ModORPackGetList.AllowDrop = True
+        ModORPackGetList.FormattingEnabled = True
+        ModORPackGetList.ItemHeight = 15
+        ModORPackGetList.Location = New Point(12, 55)
+        ModORPackGetList.Name = "ModORPackGetList"
+        ModORPackGetList.Size = New Size(198, 214)
+        ModORPackGetList.TabIndex = 3
         ' 
         ' Main
         ' 
-        AllowDrop = True
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(463, 284)
+        ClientSize = New Size(222, 284)
+        Controls.Add(ModORPackGetList)
+        Controls.Add(gamerunBTN)
+        Controls.Add(settingsBTN)
         FormBorderStyle = FormBorderStyle.FixedDialog
         MaximizeBox = False
         MinimizeBox = False
@@ -38,5 +73,9 @@ Partial Class Main
         Text = "JRDM Launcher"
         ResumeLayout(False)
     End Sub
+
+    Friend WithEvents settingsBTN As Button
+    Friend WithEvents gamerunBTN As Button
+    Friend WithEvents ModORPackGetList As ListBox
 
 End Class
