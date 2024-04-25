@@ -24,13 +24,18 @@ Partial Class Main
     Private Sub InitializeComponent()
         SuspendLayout()
         ' 
-        ' Form1
+        ' Main
         ' 
+        AllowDrop = True
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(463, 284)
-        Name = "Form1"
-        Text = "Form1"
+        FormBorderStyle = FormBorderStyle.FixedDialog
+        MaximizeBox = False
+        MinimizeBox = False
+        Name = "Main"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "JRDM Launcher"
         ResumeLayout(False)
     End Sub
 
