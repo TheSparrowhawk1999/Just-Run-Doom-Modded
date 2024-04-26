@@ -6,6 +6,9 @@ Public Class Main
 
     Private openOnce As Boolean = False
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim appIcon As Icon = My.Resources.jrdmicon
+        Me.Icon = appIcon
+
         Dim settings As New settings()
         Dim findFileTXT As TextBox = settings.findFileTXT
         Dim CheckBox1 As CheckBox = settings.CheckBox1
@@ -15,7 +18,6 @@ Public Class Main
 
         AddHandler ModORPackGetList.DragEnter, AddressOf ModORPackGetList_DragEnter
         AddHandler ModORPackGetList.DragDrop, AddressOf ModORPackGetList_DragDrop
-
     End Sub
 
     Private Sub ModORPackGetList_DragEnter(sender As Object, e As DragEventArgs) Handles ModORPackGetList.DragEnter
