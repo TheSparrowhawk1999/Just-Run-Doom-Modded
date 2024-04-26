@@ -91,4 +91,18 @@ Public Class Main
             End If
         End If
     End Sub
+
+    Private Sub About_FormClosed(sender As Object, e As FormClosedEventArgs)
+        openOnce = False
+    End Sub
+
+    Private Sub aboutOpenBTN_Click(sender As Object, e As EventArgs) Handles aboutOpenBTN.Click
+        If Not openOnce Then
+            Dim about As New About()
+            about.Show()
+            'these 2 lines of code is for not making other open section opening multiple times. Since VB.NET is dumb but easy.
+            openOnce = True
+            AddHandler about.FormClosed, AddressOf About_FormClosed
+        End If
+    End Sub
 End Class
