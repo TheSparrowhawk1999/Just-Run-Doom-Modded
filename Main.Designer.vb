@@ -25,12 +25,13 @@ Partial Class Main
         settingsBTN = New Button()
         gamerunBTN = New Button()
         ModORPackGetList = New ListBox()
+        Button1 = New Button()
         SuspendLayout()
         ' 
         ' settingsBTN
         ' 
         settingsBTN.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(162))
-        settingsBTN.Location = New Point(12, 12)
+        settingsBTN.Location = New Point(84, 12)
         settingsBTN.Name = "settingsBTN"
         settingsBTN.Size = New Size(45, 37)
         settingsBTN.TabIndex = 0
@@ -40,7 +41,7 @@ Partial Class Main
         ' gamerunBTN
         ' 
         gamerunBTN.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        gamerunBTN.Location = New Point(63, 12)
+        gamerunBTN.Location = New Point(135, 12)
         gamerunBTN.Name = "gamerunBTN"
         gamerunBTN.Size = New Size(75, 37)
         gamerunBTN.TabIndex = 1
@@ -57,11 +58,22 @@ Partial Class Main
         ModORPackGetList.Size = New Size(198, 214)
         ModORPackGetList.TabIndex = 3
         ' 
+        ' Button1
+        ' 
+        Button1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(162))
+        Button1.Location = New Point(12, 12)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(66, 37)
+        Button1.TabIndex = 4
+        Button1.Text = "About"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Main
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(222, 284)
+        Controls.Add(Button1)
         Controls.Add(ModORPackGetList)
         Controls.Add(gamerunBTN)
         Controls.Add(settingsBTN)
@@ -77,5 +89,6 @@ Partial Class Main
     Friend WithEvents settingsBTN As Button
     Friend WithEvents gamerunBTN As Button
     Friend WithEvents ModORPackGetList As ListBox
+    Friend WithEvents Button1 As Button
 
 End Class
