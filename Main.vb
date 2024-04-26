@@ -74,9 +74,11 @@ Public Class Main
     Private Sub gamerunBTN_Click(sender As Object, e As EventArgs) Handles gamerunBTN.Click
         Dim selectedFilePath As String = ConfigurationManager.AppSettings("selectedFilePath")
 
-        If Not String.IsNullOrEmpty(selectedFilePath) Then
+        If Not String.IsNullOrEmpty(selectedFilePath) AndAlso ModORPackGetList.Items.Count > 0 Then
+
             Try
-                Process.Start(selectedFilePath, $"--file ""{filePath}""") 'Work on this
+                Dim doomFiles As String = String.Join(" ", ModORPackGetList.Items.Cast(Of String)())
+                Process.Start(selectedFilePath, doomFiles)
             Catch ex As Exception
                 MessageBox.Show("Failed to launch the application." & Environment.NewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
