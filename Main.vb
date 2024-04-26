@@ -45,7 +45,12 @@ Public Class Main
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = DirectCast(e.Data.GetData(DataFormats.FileDrop), String())
             For Each file In files
-                ModORPackGetList.Items.Add(file)
+                If file.EndsWith(".wad") OrElse file.EndsWith(".pk3") Then
+                    Dim samefile As String = Path.GetFileName(file)
+                    If Not ModORPackGetList.Items.Cast(Of String)().Any(Function(item) Path.GetFileName(item) = samefile) Then
+                        ModORPackGetList.Items.Add(file)
+                    End If
+                End If
             Next
         End If
     End Sub
